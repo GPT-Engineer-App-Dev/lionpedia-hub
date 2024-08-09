@@ -58,12 +58,15 @@ const Index = () => {
   const conservationRef = useRef(null);
 
   const scrollToConservation = () => {
-    if (tabsRef.current) {
-      tabsRef.current.querySelector('[value="conservation"]').click();
-    }
-    if (conservationRef.current) {
-      conservationRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    setTimeout(() => {
+      const conservationTab = tabsRef.current?.querySelector('[value="conservation"]');
+      if (conservationTab) {
+        conservationTab.click();
+      }
+      if (conservationRef.current) {
+        conservationRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 0);
   };
 
   useEffect(() => {
