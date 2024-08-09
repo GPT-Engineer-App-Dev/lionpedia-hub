@@ -24,7 +24,7 @@ const LionFacts = [
   "Lions can go up to four days without drinking water.",
   "The heaviest lion on record weighed 826 pounds (375 kg).",
   "Lions can mate up to 100 times in a single day.",
-  "A group of lions is called a 'pride' or 'sawt'.",
+  "A group of lions is called a 'pride'.",
   "Lions are mentioned in the Bible over 150 times.",
 ];
 
