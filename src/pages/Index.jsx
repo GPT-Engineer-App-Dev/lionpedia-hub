@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
-import { Lion, Paw, Crown, Heart } from 'lucide-react';
+import { Cat, Paw, Crown, Heart } from 'lucide-react';
 
 const LionFacts = [
   "Lions are the only cats that live in groups, which are called prides.",
@@ -72,7 +72,7 @@ const Index = () => {
         <TabsContent value="about">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center"><Lion className="mr-2" /> About Lions</CardTitle>
+              <CardTitle className="flex items-center"><Cat className="mr-2" /> About Lions</CardTitle>
               <CardDescription>The kings and queens of the savanna</CardDescription>
             </CardHeader>
             <CardContent>
