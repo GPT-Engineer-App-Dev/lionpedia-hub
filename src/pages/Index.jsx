@@ -64,7 +64,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-amber-100 to-orange-200">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-amber-200 to-orange-300">
       <Navbar />
       <div className="flex-grow flex flex-col items-center justify-center p-4">
         <motion.h1 
