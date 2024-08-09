@@ -3,20 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Crown, Info, Heart } from 'lucide-react';
 
-const Navbar = () => {
-  const scrollToConservation = () => {
-    const conservationTab = document.getElementById('conservation-tab');
-    if (conservationTab) {
-      conservationTab.click();
-      setTimeout(() => {
-        const conservationSection = document.getElementById('conservation-section');
-        if (conservationSection) {
-          conservationSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }
-  };
-
+const Navbar = ({ onConservationClick }) => {
   return (
     <nav className="bg-amber-800 text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -29,7 +16,7 @@ const Navbar = () => {
             <Info className="mr-2 h-4 w-4" />
             About
           </Button>
-          <Button variant="ghost" className="text-white hover:text-amber-200" onClick={scrollToConservation}>
+          <Button variant="ghost" className="text-white hover:text-amber-200" onClick={onConservationClick}>
             <Heart className="mr-2 h-4 w-4" />
             Conservation
           </Button>

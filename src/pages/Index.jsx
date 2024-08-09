@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -63,9 +63,19 @@ const Index = () => {
     setFactIndex((prevIndex) => (prevIndex + 1) % LionFacts.length);
   };
 
+  const tabsRef = useRef(null);
+  const conservationRef = useRef(null);
+
+  const scrollToConservation = () => {
+    if (tabsRef.current && conservationRef.current) {
+      tabsRef.current.value = "conservation";
+      conservationRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-amber-200 to-orange-300">
-      <Navbar />
+      <Navbar onConservationClick={scrollToConservation} />
       <div className="flex-grow flex flex-col items-center justify-center p-4">
         <motion.h1 
           initial={{ y: -50, opacity: 0 }}
@@ -98,11 +108,11 @@ const Index = () => {
         </motion.div>
       </motion.div>
       
-      <Tabs defaultValue="about" className="w-full max-w-4xl">
+      <Tabs ref={tabsRef} defaultValue="about" className="w-full max-w-4xl">
         <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="about">About</TabsTrigger>
           <TabsTrigger value="facts">Facts</TabsTrigger>
-          <TabsTrigger value="conservation" id="conservation-tab">Conservation</TabsTrigger>
+          <TabsTrigger value="conservation">Conservation</TabsTrigger>
           <TabsTrigger value="movie">Movie</TabsTrigger>
           <TabsTrigger value="quiz">Quiz</TabsTrigger>
         </TabsList>
@@ -145,7 +155,7 @@ const Index = () => {
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="conservation" id="conservation-section">
+        <TabsContent value="conservation" ref={conservationRef}>
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center"><Heart className="mr-2" /> Lion Conservation</CardTitle>
