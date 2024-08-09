@@ -36,9 +36,9 @@ const Index = () => {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="text-6xl font-bold mb-8 text-amber-800 flex items-center"
+        className="text-6xl font-bold mb-8 text-amber-800 flex items-center lowercase"
       >
-        <Crown className="mr-2 h-12 w-12" /> The Majestic Lion
+        <Crown className="mr-2 h-12 w-12" /> the majestic lion
       </motion.h1>
       
       <motion.div
