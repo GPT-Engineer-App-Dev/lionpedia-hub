@@ -129,19 +129,19 @@ const Index = () => {
               <CardDescription>Discover amazing lion trivia!</CardDescription>
             </CardHeader>
             <CardContent>
-              <AnimatePresence mode="wait">
-                <motion.p 
-                  key={factIndex}
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -20, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-lg mb-4 h-20"
-                >
-                  {LionFacts[factIndex]}
-                </motion.p>
-              </AnimatePresence>
-              <Button onClick={nextFact} className="bg-amber-600 hover:bg-amber-700">Next Fact</Button>
+              <ul className="list-disc list-inside space-y-2 max-h-[400px] overflow-y-auto">
+                {LionFacts.map((fact, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="text-gray-700"
+                  >
+                    {fact}
+                  </motion.li>
+                ))}
+              </ul>
             </CardContent>
           </Card>
         </TabsContent>
