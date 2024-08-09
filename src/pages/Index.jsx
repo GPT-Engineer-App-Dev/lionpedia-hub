@@ -102,7 +102,7 @@ const Index = () => {
         <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="about">About</TabsTrigger>
           <TabsTrigger value="facts">Facts</TabsTrigger>
-          <TabsTrigger value="conservation">Conservation</TabsTrigger>
+          <TabsTrigger value="conservation" id="conservation-tab">Conservation</TabsTrigger>
           <TabsTrigger value="movie">Movie</TabsTrigger>
           <TabsTrigger value="quiz">Quiz</TabsTrigger>
         </TabsList>
@@ -145,7 +145,7 @@ const Index = () => {
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="conservation">
+        <TabsContent value="conservation" id="conservation-section">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center"><Heart className="mr-2" /> Lion Conservation</CardTitle>
