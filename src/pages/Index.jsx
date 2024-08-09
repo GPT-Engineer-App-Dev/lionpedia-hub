@@ -54,6 +54,22 @@ const Index = () => {
   const [quizScore, setQuizScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
 
+  const tabsRef = useRef(null);
+  const conservationRef = useRef(null);
+
+  const scrollToConservation = () => {
+    if (tabsRef.current) {
+      tabsRef.current.querySelector('[value="conservation"]').click();
+    }
+    if (conservationRef.current) {
+      conservationRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [quizScore, setQuizScore] = useState(0);
+  const [quizCompleted, setQuizCompleted] = useState(false);
+
   useEffect(() => {
     const timer = setTimeout(() => setProgress(66), 500);
     return () => clearTimeout(timer);

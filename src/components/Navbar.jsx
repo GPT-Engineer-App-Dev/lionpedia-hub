@@ -12,7 +12,7 @@ const Navbar = ({ onConservationClick }) => {
           <span>Lion Kingdom</span>
         </Link>
         <div className="space-x-4">
-          <Button variant="ghost" className="text-white hover:text-amber-200">
+          <Button variant="ghost" className="text-white hover:text-amber-200" onClick={onConservationClick}>
             <Info className="mr-2 h-4 w-4" />
             About
           </Button>
