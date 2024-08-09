@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Cat, Info, Crown, Heart } from 'lucide-react';
+import Navbar from '../components/Navbar';
 
 const LionFacts = [
   "Lions are the only cats that live in groups, which are called prides.",
@@ -31,15 +32,17 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-amber-100 to-orange-200 p-4">
-      <motion.h1 
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="text-6xl font-bold mb-8 text-amber-800 flex items-center lowercase"
-      >
-        <Crown className="mr-2 h-12 w-12" /> the majestic lion
-      </motion.h1>
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-amber-100 to-orange-200">
+      <Navbar />
+      <div className="flex-grow flex flex-col items-center justify-center p-4">
+        <motion.h1 
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="text-6xl font-bold mb-8 text-amber-800 flex items-center lowercase"
+        >
+          <Crown className="mr-2 h-12 w-12" /> the majestic lion
+        </motion.h1>
       
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
