@@ -16,6 +16,14 @@ const LionFacts = [
   "Lions can run up to 50 mph in short bursts.",
   "A lion's tongue is covered in sharp, backward-facing barbs.",
   "Lions are the second-largest living cat species, after tigers.",
+  "A lion's eyesight is 5 times better than a human's.",
+  "Lion cubs are born with blue eyes that turn amber or brown around 3 months old.",
+  "Male lions develop their iconic manes around 2 years of age.",
+  "Lions can go up to four days without drinking water.",
+  "The heaviest lion on record weighed 826 pounds (375 kg).",
+  "Lions can mate up to 100 times in a single day.",
+  "A group of lions is called a 'pride' or 'sawt'.",
+  "Lions are mentioned in the Bible over 150 times.",
 ];
 
 const Index = () => {
