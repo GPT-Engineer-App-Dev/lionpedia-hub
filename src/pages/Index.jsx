@@ -65,10 +65,6 @@ const Index = () => {
       conservationRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState("");
-  const [quizScore, setQuizScore] = useState(0);
-  const [quizCompleted, setQuizCompleted] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setProgress(66), 500);
@@ -77,16 +73,6 @@ const Index = () => {
 
   const nextFact = () => {
     setFactIndex((prevIndex) => (prevIndex + 1) % LionFacts.length);
-  };
-
-  const tabsRef = useRef(null);
-  const conservationRef = useRef(null);
-
-  const scrollToConservation = () => {
-    if (tabsRef.current && conservationRef.current) {
-      tabsRef.current.value = "conservation";
-      conservationRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   return (
