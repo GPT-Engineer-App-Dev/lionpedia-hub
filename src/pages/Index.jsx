@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
-import { Cat, Info, Crown, Heart, Film } from 'lucide-react';
+import { Cat, Info, Crown, Heart, Film, HelpCircle } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 const LionFacts = [
   "Lions are the only cats that live in groups, which are called prides.",
@@ -26,9 +28,31 @@ const LionFacts = [
   "Lions are mentioned in the Bible over 150 times.",
 ];
 
+const quizQuestions = [
+  {
+    question: "What is a group of lions called?",
+    options: ["Pack", "Herd", "Pride", "Flock"],
+    correctAnswer: "Pride"
+  },
+  {
+    question: "How many hours can a lion sleep in a day?",
+    options: ["Up to 5", "Up to 10", "Up to 15", "Up to 20"],
+    correctAnswer: "Up to 20"
+  },
+  {
+    question: "Which gender of lions usually does most of the hunting?",
+    options: ["Male", "Female", "Both equally", "Cubs"],
+    correctAnswer: "Female"
+  }
+];
+
 const Index = () => {
   const [factIndex, setFactIndex] = useState(0);
   const [progress, setProgress] = useState(13);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [quizScore, setQuizScore] = useState(0);
+  const [quizCompleted, setQuizCompleted] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setProgress(66), 500);
@@ -75,11 +99,12 @@ const Index = () => {
       </motion.div>
       
       <Tabs defaultValue="about" className="w-full max-w-4xl">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="about">About</TabsTrigger>
           <TabsTrigger value="facts">Facts</TabsTrigger>
           <TabsTrigger value="conservation">Conservation</TabsTrigger>
           <TabsTrigger value="movie">Movie</TabsTrigger>
+          <TabsTrigger value="quiz">Quiz</TabsTrigger>
         </TabsList>
         <TabsContent value="about">
           <Card>
@@ -159,6 +184,56 @@ const Index = () => {
                 Jonathan Taylor Thomas, Moira Kelly, Nathan Lane, Ernie Sabella, Rowan Atkinson, and others. It became a major 
                 success, winning two Academy Awards for its achievement in music and the Golden Globe Award for Best Motion Picture – Musical or Comedy.
               </p>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="quiz">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center"><HelpCircle className="mr-2" /> Lion Quiz</CardTitle>
+              <CardDescription>Test your knowledge about lions!</CardDescription>
+            </CardHeader>
+            <CardContent>
+              {!quizCompleted ? (
+                <>
+                  <p className="mb-4 font-semibold">Question {currentQuestionIndex + 1} of {quizQuestions.length}</p>
+                  <p className="mb-4">{quizQuestions[currentQuestionIndex].question}</p>
+                  <RadioGroup value={selectedAnswer} onValueChange={setSelectedAnswer} className="mb-4">
+                    {quizQuestions[currentQuestionIndex].options.map((option, index) => (
+                      <div key={index} className="flex items-center space-x-2">
+                        <RadioGroupItem value={option} id={`option-${index}`} />
+                        <Label htmlFor={`option-${index}`}>{option}</Label>
+                      </div>
+                    ))}
+                  </RadioGroup>
+                  <Button onClick={() => {
+                    if (selectedAnswer === quizQuestions[currentQuestionIndex].correctAnswer) {
+                      setQuizScore(quizScore + 1);
+                    }
+                    if (currentQuestionIndex < quizQuestions.length - 1) {
+                      setCurrentQuestionIndex(currentQuestionIndex + 1);
+                      setSelectedAnswer("");
+                    } else {
+                      setQuizCompleted(true);
+                    }
+                  }} disabled={!selectedAnswer}>
+                    {currentQuestionIndex < quizQuestions.length - 1 ? "Next Question" : "Finish Quiz"}
+                  </Button>
+                </>
+              ) : (
+                <div>
+                  <h3 className="text-xl font-bold mb-4">Quiz Completed!</h3>
+                  <p className="mb-4">Your score: {quizScore} out of {quizQuestions.length}</p>
+                  <Button onClick={() => {
+                    setCurrentQuestionIndex(0);
+                    setSelectedAnswer("");
+                    setQuizScore(0);
+                    setQuizCompleted(false);
+                  }}>
+                    Retake Quiz
+                  </Button>
+                </div>
+              )}
             </CardContent>
           </Card>
         </TabsContent>
