@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
-import { Cat, Info, Crown, Heart } from 'lucide-react';
+import { Cat, Info, Crown, Heart, Film } from 'lucide-react';
 import Navbar from '../components/Navbar';
 
 const LionFacts = [
@@ -75,10 +75,11 @@ const Index = () => {
       </motion.div>
       
       <Tabs defaultValue="about" className="w-full max-w-4xl">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="about">About</TabsTrigger>
           <TabsTrigger value="facts">Facts</TabsTrigger>
           <TabsTrigger value="conservation">Conservation</TabsTrigger>
+          <TabsTrigger value="movie">Movie</TabsTrigger>
         </TabsList>
         <TabsContent value="about">
           <Card>
@@ -137,6 +138,27 @@ const Index = () => {
                 </div>
                 <Progress value={progress} className="w-full" />
               </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="movie">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center"><Film className="mr-2" /> The Lion King</CardTitle>
+              <CardDescription>Disney's beloved animated classic</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                "The Lion King" is a 1994 American animated musical drama film produced by Walt Disney Feature Animation. 
+                It tells the story of Simba, a young lion who is to succeed his father, Mufasa, as King of the Pride Lands. 
+                However, after Simba's paternal uncle Scar murders Mufasa, Simba is manipulated into thinking he was responsible 
+                and flees into exile.
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                The film features an ensemble voice cast including Matthew Broderick, James Earl Jones, Jeremy Irons, 
+                Jonathan Taylor Thomas, Moira Kelly, Nathan Lane, Ernie Sabella, Rowan Atkinson, and others. It became a major 
+                success, winning two Academy Awards for its achievement in music and the Golden Globe Award for Best Motion Picture – Musical or Comedy.
+              </p>
             </CardContent>
           </Card>
         </TabsContent>
